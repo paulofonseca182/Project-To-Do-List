@@ -9,19 +9,19 @@ function App() {
       id: 1,
       text: 'Criar funcionalidade x no sistema',
       category: 'Trabalho',
-      iscompleted: false
+      isCompleted: false
     },
     {
       id: 2,
       text: 'Ir para academia',
       category: 'Pessoal',
-      iscompleted: false
+      isCompleted: false
     },
     {
       id: 3,
       text: 'Estudar React',
       category: 'Estudos',
-      iscompleted: false
+      isCompleted: false
     }
   ])
 
@@ -32,7 +32,7 @@ function App() {
         id: Math.floor(Math.random() * 10000),
         text,
         category,
-        iscompleted: false
+        isCompleted: false
       }
     ];
     setTodos(newTodos);
@@ -44,12 +44,23 @@ function App() {
     setTodos(filterTodos)
   }
 
+  const completeTodo = (id) => {
+    const newTodos = [...todos]
+    newTodos.map((todo) => todo.id === id ? todo.isCompleted = !todo.isCompleted : todo)
+    setTodos(newTodos)
+  }
+    
+
   return (
     <div className="app">
       <h1>Lista de Tarefas</h1>
       <div className='todo-list'>
         {todos.map((todo) => (
-          <Todo key={todo.id} todo={todo} removeTodo={removeTodo} />
+          <Todo 
+          key={todo.id} 
+          todo={todo} 
+          removeTodo={removeTodo} 
+          completeTodo={completeTodo} />
         ))}
       </div>
       <TodoForm addTodo={addTodo} />
