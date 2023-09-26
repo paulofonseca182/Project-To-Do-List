@@ -27,8 +27,8 @@ function App() {
 
   const addTodo = (text, category) => {
     const newTodos = [
-      ...todos, 
-      { 
+      ...todos,
+      {
         id: Math.floor(Math.random() * 10000),
         text,
         category,
@@ -38,15 +38,21 @@ function App() {
     setTodos(newTodos);
   };
 
+  const removeTodo = (id) => {
+    const newTodos = [...todos]
+    const filterTodos = newTodos.filter((todo) => todo.id !== id ? todo : null);
+    setTodos(filterTodos)
+  }
+
   return (
     <div className="app">
       <h1>Lista de Tarefas</h1>
       <div className='todo-list'>
         {todos.map((todo) => (
-          <Todo key={todo.id} todo={todo} />
+          <Todo key={todo.id} todo={todo} removeTodo={removeTodo} />
         ))}
       </div>
-      <TodoForm addTodo={addTodo}/>
+      <TodoForm addTodo={addTodo} />
     </div>
   )
 }
