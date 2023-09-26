@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import Todo from './components/Todo'
 
 function App() {
   const [todos, setTodos] = useState([
@@ -29,16 +30,7 @@ function App() {
       <div className='todo-list'>
         {todos.map((todo) => (
           // eslint-disable-next-line react/jsx-key
-          <div className='todo'>
-            <div className='content'>
-              <p>{todo.text}</p>
-              <p>({todo.categoty})</p>
-            </div>
-            <div>
-              <button>Concluir</button>
-              <button>Excluir</button>
-            </div>
-          </div>
+          <Todo todo={todo} />
         ))}
       </div>
     </div>
