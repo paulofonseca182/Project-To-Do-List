@@ -6,7 +6,7 @@ const Todo = ({ todo }) => {
       <div className='todo'>
             <div className='content'>
               <p>{todo.text}</p>
-              <p>({todo.categoty})</p>
+              <p>({todo.category})</p>
             </div>
             <div>
               <button className='complete'>Concluir</button>
